@@ -1,0 +1,25 @@
+{
+  "name": "thecodingmachine/symfony-console-universal-module",
+  "type": "library",
+  "description": "Cross-framework module for symfony/console.",
+  "keywords": ["symfony", "console", "service provider"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Xavier HUBERTY",
+      "email": "x.huberty@thecodingmachine.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "container-interop/service-provider": "~0.3.0",
+    "symfony/console": "~3.0",
+    "symfony/event-dispatcher": "~3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TheCodingMachine\\": "src/"
+    }
+  },
+  "bin": [ "bin/application_console" ]
+}
