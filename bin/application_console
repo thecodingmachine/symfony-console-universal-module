@@ -1,0 +1,5 @@
+#!/usr/bin/env php
+<?php
+$container = require_once __DIR__.'/../../../../container.php';
+
+$container->get(\Symfony\Component\Console\Application::class)->run();

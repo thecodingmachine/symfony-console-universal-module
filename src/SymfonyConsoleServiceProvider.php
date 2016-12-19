@@ -7,7 +7,7 @@ use Interop\Container\ServiceProvider;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\HelperSet;
 
-class SymgonyConsoleServiceProvider implements ServiceProvider
+class SymfonyConsoleServiceProvider implements ServiceProvider
 {
 
     /**
