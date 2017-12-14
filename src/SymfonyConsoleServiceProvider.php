@@ -3,29 +3,32 @@ namespace TheCodingMachine;
 
 
 use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Helper\DebugFormatterHelper;
+use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\Console\Helper\ProcessHelper;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use TheCodingMachine\Funky\Annotations\Factory;
 use TheCodingMachine\Funky\ServiceProvider;
 
 class SymfonyConsoleServiceProvider extends ServiceProvider
 {
     /**
+     * Creates an helper set with default values from symfony/console
+     *
      * @Factory()
-     * @return HelperSet
      */
-    public static function getHelperSet(): HelperSet
+    public static function getHelperSet(Application $application): HelperSet
     {
-        return new HelperSet();
+        return $application->getHelperSet();
     }
 
     /**
      * @Factory()
      * @return Application
      */
-    public static function getApplication(HelperSet $helperSet): Application
+    public static function getApplication(): Application
     {
-        $console = new Application();
-        $console->setHelperSet($helperSet);
-        return $console;
+        return new Application();
     }
 }

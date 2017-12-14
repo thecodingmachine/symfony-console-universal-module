@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+require_once __DIR__.'/../../../../vendor/autoload.php';
 
 $containerFiles = array(__DIR__.'/../../../../container.php', __DIR__.'/../../../../config/container.php');
 
