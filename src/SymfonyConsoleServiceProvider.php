@@ -2,41 +2,30 @@
 namespace TheCodingMachine;
 
 
-use Interop\Container\ContainerInterface;
-use Interop\Container\ServiceProvider;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Helper\HelperSet;
+use TheCodingMachine\Funky\Annotations\Factory;
+use TheCodingMachine\Funky\ServiceProvider;
 
-class SymfonyConsoleServiceProvider implements ServiceProvider
+class SymfonyConsoleServiceProvider extends ServiceProvider
 {
+    /**
+     * @Factory()
+     * @return HelperSet
+     */
+    public static function getHelperSet(): HelperSet
+    {
+        return new HelperSet();
+    }
 
     /**
-     * Returns a list of all container entries registered by this service provider.
-     *
-     * - the key is the entry name
-     * - the value is a callable that will return the entry, aka the **factory**
-     *
-     * Factories have the following signature:
-     *        function(ContainerInterface $container, callable $getPrevious = null)
-     *
-     * About factories parameters:
-     *
-     * - the container (instance of `Interop\Container\ContainerInterface`)
-     * - a callable that returns the previous entry if overriding a previous entry, or `null` if not
-     *
-     * @return callable[]
+     * @Factory()
+     * @return Application
      */
-    public function getServices()
+    public static function getApplication(HelperSet $helperSet): Application
     {
-        return [
-            HelperSet::class => function (ContainerInterface $container) {
-                return new HelperSet();
-            },
-            Application::class =>function(ContainerInterface $container) {
-                $console = new Application();
-                $console->setHelperSet($container->get(HelperSet::class));
-                return $console;
-            }
-        ];
+        $console = new Application();
+        $console->setHelperSet($helperSet);
+        return $console;
     }
 }

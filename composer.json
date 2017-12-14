@@ -6,20 +6,31 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Xavier HUBERTY",
-      "email": "x.huberty@thecodingmachine.com"
+      "name": "Xavier HUBERTY"
+    },
+    {
+      "name": "David NEGRIER",
+      "email": "d.negrier@thecodingmachine.com"
     }
+
   ],
   "require": {
     "php": ">=7.0",
-    "container-interop/service-provider": "~0.3.0",
-    "symfony/console": "~3.0",
-    "symfony/event-dispatcher": "~3.0"
+    "thecodingmachine/funky": "^1",
+    "symfony/console": "^3 || ^4",
+    "symfony/event-dispatcher": "^3 || ^4"
   },
   "autoload": {
     "psr-4": {
       "TheCodingMachine\\": "src/"
     }
   },
-  "bin": [ "bin/application_console" ]
+  "bin": [ "bin/app_console" ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.4.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }

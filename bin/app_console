@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+$containerFiles = array(__DIR__.'/../../../../container.php', __DIR__.'/../../../../config/container.php');
+
+$container = null;
+foreach ($containerFiles as $containerFile) {
+    if (file_exists($containerFile)) {
+        $container = require $containerFile;
+        break;
+    }
+}
+
+if (!$container) {
+    throw new RuntimeException('Neither container.php nor config/container.php files were found (or they did not return a container).');
+}
+
+$container->get(\Symfony\Component\Console\Application::class)->run();
